@@ -18,9 +18,9 @@ def read_keys():
         return keys
 
 
-def write_keys(keys):
+def write_keys(modulo, public, private):
     with open(KEYS_PATH, "w") as f:
-        dump(keys, f, indent=4)
+        dump({"modulo": modulo, "public": public, "private": private}, f, indent=4)
 
 
 def generate_keys():
@@ -35,7 +35,7 @@ def generate_keys():
     # encryption
     e = generate_e(z)
     d = pow(e, -1, z)
-    print(e, d, z)
+    return n, e, d
 
 
 def generate_e(z):
@@ -45,8 +45,13 @@ def generate_e(z):
     return prime
 
 
+def create_key_pair():
+    modulo, public, private = generate_keys()
+    write_keys(modulo, public, private)
+
+
 def main():
-    generate_keys()
+    create_key_pair()
     # print(read_keys())
     # write_keys({"public": "sadfasdf", "private": "hello"})
 
