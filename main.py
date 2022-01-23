@@ -30,12 +30,15 @@ def generate_keys():
     # Generate primes
     p = numgen.choice(list(primerange(10000, 400000)))
     q = numgen.choice(list(primerange(10000, 400000)))
-    n = p * q
     z = (p - 1) * (q - 1)  # Mod wheel
-    # encryption
-    e = generate_e(z)
+    e = 65537
+    while gcd(65537, z) != 1:
+        p = numgen.choice(list(primerange(10000, 400000)))
+        q = numgen.choice(list(primerange(10000, 400000)))
+        z = (p - 1) * (q - 1)  # Mod wheel
+    n = p * q
     d = pow(e, -1, z)
-    return n, e, d
+    return n, e, d# TODO returned in wrong order
 
 
 def generate_e(z):
