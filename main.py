@@ -55,8 +55,6 @@ def create_key_pair():
 
 def main():
     create_key_pair()
-    # print(read_keys())
-    # write_keys({"public": "sadfasdf", "private": "hello"})
 
 
 if __name__ == "__main__":
