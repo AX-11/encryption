@@ -18,9 +18,9 @@ def read_keys():
         return keys
 
 
-def write_keys(modulo, public, private):
+def write_keys(n, e, d):
     with open(KEYS_PATH, "w") as f:
-        dump({"modulo": modulo, "public": public, "private": private}, f, indent=4)
+        dump({"public": [e, n], "private": [d, n]}, f, indent=4)
 
 
 def generate_keys():
@@ -38,7 +38,7 @@ def generate_keys():
         z = (p - 1) * (q - 1)  # Mod wheel
     n = p * q
     d = pow(e, -1, z)
-    return n, e, d# TODO returned in wrong order
+    return n, e, d
 
 
 def generate_e(z):
@@ -49,8 +49,8 @@ def generate_e(z):
 
 
 def create_key_pair():
-    modulo, public, private = generate_keys()
-    write_keys(modulo, public, private)
+    n, e, d = generate_keys()
+    write_keys(n, e, d)
 
 
 def main():
