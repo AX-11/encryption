@@ -9,7 +9,7 @@ from math import gcd
 numgen = SystemRandom()
 
 
-KEYS_PATH = "keys.json"
+KEYS_PATH = r"keys.json"
 
 
 def read_keys():
@@ -38,7 +38,7 @@ def generate_keys():
         z = (p - 1) * (q - 1)  # Mod wheel
     n = p * q
     d = pow(e, -1, z)
-    return n, e, d# TODO returned in wrong order
+    return n, e, d# TODO returned in wrong order?
 
 
 def generate_e(z):
