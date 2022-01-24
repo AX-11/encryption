@@ -9,7 +9,7 @@ from math import gcd
 numgen = SystemRandom()
 
 
-KEYS_PATH = "keys.json"
+KEYS_PATH = r"keys.json"
 
 
 def read_keys():
